@@ -1,18 +1,18 @@
-# React入門
+# React 入門
 
 ## 開発環境構築の準備
 
 下記ツールを使用する
 
 - VOLTA
-  - Nodejsをインストールすることができる
-  - Nodejsのバージョンを管理したり、バージョンを切り替える場合に使用する
+  - Nodejs をインストールすることができる
+  - Nodejs のバージョンを管理したり、バージョンを切り替える場合に使用する
 - Nodejs
-  - JavaScriptをサーバーサイドで動作させるためのプラットフォーム
-  - Reactを動かすために使用する
+  - JavaScript をサーバーサイドで動作させるためのプラットフォーム
+  - React を動かすために使用する
 - Vite
   - モダンなフロントエンド開発のためのビルドツール
-  - Reactプロジェクトを作成するために使用する
+  - React プロジェクトを作成するために使用する
 
 ## 開発環境構築の流れ
 
@@ -24,7 +24,7 @@
 
 ## 開発環境構築
 
-### VOLTAをインストール
+### VOLTA をインストール
 
 Windows
 
@@ -46,7 +46,7 @@ volta -v
 
 [参考サイト](https://docs.volta.sh/guide/getting-started)
 
-### Node.jsをインストール
+### Node.js をインストール
 
 安定版の最新版をインストール
 
@@ -66,9 +66,11 @@ volta install node@22.5.1
 node -v
 ```
 
-## Vite + Reactでプロジェクト作成
+## Vite + React でプロジェクト作成
 
 `my-vite-react`というプロジェクトを作成
+
+※バージョンは、安定版の`19.1.0`を使用する
 
 ```bash
 npm create vite@latest my-vite-react -- --template react
@@ -76,9 +78,20 @@ npm create vite@latest my-vite-react -- --template react
 
 ## プロジェクトの起動
 
-```
+```bash
+# プロジェクトフォルダに移動
 cd my-vite-react
+
+# 必要なライブラリをインストール
 npm install
+
+# 必要であればReact バージョン19.1をインストール
+npm install react@19.1 react-dom@19.1
+
+# Reactのインストール済みバージョンを確認
+npm list react
+
+# React起動
 npm run dev
 ```
 
