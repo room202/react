@@ -54,10 +54,16 @@ volta -v
 volta install node
 ```
 
-バージョンを指定してインストール
+バージョンを指定してインストール & デフォルトに設定
 
 ```bash
-volta install node@22.5.1
+volta install node@22.15.0
+```
+
+インストール済みのパッケージを一覧表示
+
+```bash
+volta list
 ```
 
 インストールの確認
@@ -70,13 +76,13 @@ node -v
 
 `my-vite-react`というプロジェクトを作成
 
-※バージョンは、安定版の`19.1.0`を使用する
+※バージョンは、2025/05/14 時点で安定版の`19.1.0`を使用する
 
 ```bash
 npm create vite@latest my-vite-react -- --template react
 ```
 
-## プロジェクトの起動
+### プロジェクトの起動
 
 ```bash
 # プロジェクトフォルダに移動
@@ -95,11 +101,49 @@ npm list react
 npm run dev
 ```
 
-## 次回プロジェクトの起動
+### 次回プロジェクトの起動
 
-```
+```bash
 cd my-vite-react
 npm run dev
 ```
 
+## npx + React でプロジェクト作成
+
+`my-npx-react`というプロジェクトを作成
+
+※バージョンは、2025/05/14 時点で安定版の`19.1.0`を使用する
+
+```bash
+npx create-react-app my-npx-react
+```
+
+### プロジェクトの起動
+
+```bash
+# プロジェクトフォルダに移動
+cd my-npx-react
+
+# React起動
+npm start
+```
+
+### 次回プロジェクトの起動
+
+```bash
+cd my-npx-react
+npm start
+```
+
 ## メモ
+
+`npx create-react-app my-npx-react`と`npm create vite@latest my-vite-react -- --template react`の違い
+
+
+| 項目          | CRA (`create-react-app`) | Vite                   |
+| ----------- | ------------------------ | ---------------------- |
+| 開発速度        | やや遅め                     | 非常に速い ⚡                |
+| HTMLの場所     | `public/index.html`      | プロジェクト直下の `index.html` |
+| React起点ファイル | `src/index.js`           | `src/main.jsx`         |
+| 設定の柔軟性      | 隠れていて拡張しにくい              | `vite.config.js` で自在に  |
+| 将来性         | やや古い                     | 最新の主流になりつつある           |
