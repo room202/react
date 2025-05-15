@@ -150,7 +150,27 @@ npm start
 | 設定の柔軟性       | 隠れていて拡張しにくい   | `vite.config.js` で自在に       |
 | 将来性             | やや古い                 | 最新の主流になりつつある        |
 
-## Vite で作ったプロジェクトのポート番号を変更する方法
+## 初回設定
+
+### `App.jsx`をリセット
+
+ファイル名 : `src/App.jsx`
+
+```js
+import "./App.css";
+
+export const App = () => {
+  return (
+    <>
+      <h1>My API</h1>
+    </>
+  );
+};
+
+export default App;
+```
+
+### Vite で作ったプロジェクトのポート番号を変更する方法
 
 ファイル名 : vite.config.js
 
@@ -167,6 +187,12 @@ export default defineConfig({
 });
 ```
 
+## よく使うライブラリ
+
+```bash
+npm install axios
+```
+
 ## CSS 対応
 
 ### Tailwind CSS Ver.4
@@ -180,13 +206,19 @@ npm install tailwindcss @tailwindcss/vite
 ファイル : `vite.config.js`の設定追加
 
 ```js
-import { defineConfig } from 'vite';
-import tailwindcss from '@tailwindcss/vite';  // 追加
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite"; // 追加
 
+// https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    tailwindcss(),  // 追加
+    react(),
+    tailwindcss(), // 追加
   ],
+  server: {
+    port: 3000, // ここでポート番号を指定
+  },
 });
 ```
 
@@ -196,22 +228,12 @@ export default defineConfig({
 @import "tailwindcss";
 ```
 
-ファイル : `src/main.jsx`の設定変更
-
-```js
-import './index.css';
-```
-
 ファイル : `src/app.jsx`で動作確認
 
 ```js
 export default function App() {
-  return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  );
-};
+  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+}
 ```
 
 ### Tailwind CSS Ver.3
@@ -281,4 +303,42 @@ yarn add styled-components
 ```bash
 npm install @emotion/react @emotion/styled
 yarn add @emotion/react @emotion/styled
+```
+
+## API(PHP)サンプル
+
+```php
+<?php
+// CORS設定
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+
+// JSONとして返すためのヘッダーを設定
+header('Content-Type: application/json; charset=UTF-8');
+
+// データを配列で定義
+$data = [
+    [
+        "id" => 1,
+        "firstname" => "勉",
+        "lastname" => "主田",
+        "age" => 24
+    ],
+    [
+        "id" => 2,
+        "firstname" => "未来",
+        "lastname" => "先岡",
+        "age" => 28
+    ],
+    [
+        "id" => 3,
+        "firstname" => "一郎",
+        "lastname" => "後藤田",
+        "age" => 23
+    ]
+];
+
+// 配列をJSON形式で出力
+echo json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 ```
