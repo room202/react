@@ -169,9 +169,54 @@ export default defineConfig({
 
 ## CSS 対応
 
-### Tailwind CSS
+### Tailwind CSS Ver.4
 
-TailWind Ver3 をインストール
+Tailwind Ver.4 をインストール
+
+```bash
+npm install tailwindcss @tailwindcss/vite
+```
+
+ファイル : `vite.config.js`の設定追加
+
+```js
+import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite';  // 追加
+
+export default defineConfig({
+  plugins: [
+    tailwindcss(),  // 追加
+  ],
+});
+```
+
+ファイル : `src/index.css`の設定変更
+
+```css
+@import "tailwindcss";
+```
+
+ファイル : `src/main.jsx`の設定変更
+
+```js
+import './index.css';
+```
+
+ファイル : `src/app.jsx`で動作確認
+
+```js
+export default function App() {
+  return (
+    <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
+  );
+};
+```
+
+### Tailwind CSS Ver.3
+
+Tailwind Ver.3 をインストール
 
 ```bash
 npm install -D tailwindcss@3 postcss autoprefixer
@@ -179,7 +224,7 @@ npx tailwindcss init -p
 ```
 
 適応させたいファイルを指定  
-ファイル : tailwind.config.js
+ファイル : `tailwind.config.js`
 
 ```js
 /** @type {import('tailwindcss').Config} */
@@ -196,7 +241,7 @@ export default {
 ```
 
 index.css を全て削除し Tailwind を適用させる  
-ファイル : index.css
+ファイル : `index.css`
 
 ```css
 @tailwind base;
