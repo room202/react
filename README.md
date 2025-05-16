@@ -162,7 +162,7 @@ import "./App.css";
 export const App = () => {
   return (
     <>
-      <h1>My API</h1>
+      <h1>Hello React</h1>
     </>
   );
 };
@@ -200,7 +200,7 @@ npm install axios
 Tailwind Ver.4 をインストール
 
 ```bash
-npm install tailwindcss @tailwindcss/vite
+npm install -D @tailwindcss/vite
 ```
 
 ファイル : `vite.config.js`の設定追加
@@ -231,9 +231,17 @@ export default defineConfig({
 ファイル : `src/app.jsx`で動作確認
 
 ```js
-export default function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
-}
+import "./App.css";
+
+export const App = () => {
+  return (
+    <>
+      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+    </>
+  );
+};
+
+export default App;
 ```
 
 ### Tailwind CSS Ver.3
