@@ -228,7 +228,7 @@ export default defineConfig({
 @import "tailwindcss";
 ```
 
-ファイル : `src/app.jsx`で動作確認
+ファイル : `src/App.jsx`で動作確認
 
 ```js
 import "./App.css";
