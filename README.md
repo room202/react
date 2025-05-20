@@ -79,7 +79,19 @@ node -v
 ※バージョンは、2025/05/14 時点で安定版の`19.1.0`を使用する
 
 ```bash
+# 最新版のViteでReactプロジェクトを作成
 npm create vite@latest my-vite-react -- --template react
+
+# バージョン指定のViteで対話形式でプロジェクト作成
+npm create vite@6.2.1
+
+# 対話形式の実行結果
+Need to install the following packages:
+create-vite@6.2.1
+Ok to proceed? (y) y
+√ Project name: ... my-vite-project
+√ Select a framework: » React
+√ Select a variant: » JavaScript
 ```
 
 ### プロジェクトの起動
@@ -108,49 +120,28 @@ cd my-vite-react
 npm run dev
 ```
 
-## npx + React でプロジェクト作成
-
-`my-npx-react`というプロジェクトを作成
-
-※バージョンは、2025/05/14 時点で安定版の`19.1.0`を使用する
-
-```bash
-npx create-react-app my-npx-react
-```
-
-### プロジェクトの起動
-
-```bash
-# プロジェクトフォルダに移動
-cd my-npx-react
-
-# React起動
-npm start
-```
-
-### 次回プロジェクトの起動
-
-```bash
-cd my-npx-react
-npm start
-```
-
-## CRA(`create-react-app`) と Vite の違い
-
-`npx create-react-app my-npx-react`  
-と  
-`npm create vite@latest my-vite-react -- --template react`  
-の違い
-
-| 項目               | CRA (`create-react-app`) | Vite                            |
-| ------------------ | ------------------------ | ------------------------------- |
-| 開発速度           | やや遅め                 | 非常に速い ⚡                   |
-| HTML の場所        | `public/index.html`      | プロジェクト直下の `index.html` |
-| React 起点ファイル | `src/index.js`           | `src/main.jsx`                  |
-| 設定の柔軟性       | 隠れていて拡張しにくい   | `vite.config.js` で自在に       |
-| 将来性             | やや古い                 | 最新の主流になりつつある        |
-
 ## 初回設定
+
+### eslint の設定
+
+ファイル名 : eslint.config.js
+
+```js
+    rules: {
+      ...js.configs.recommended.rules,
+      ...react.configs.recommended.rules,
+      ...react.configs['jsx-runtime'].rules,
+      ...reactHooks.configs.recommended.rules,
+      'react/jsx-no-target-blank': 'off',
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
+      "no-undefined": "error",    // 追加 : 未定義の変数を使用するとエラー
+      "no-unused-vars": "error",  // 追加 : 変数を定義したが使っていないとエラー
+      "react/prop-types": "off",  // 追加 : React特有の型定義ルールをオフ
+    },
+```
 
 ### `App.jsx`をリセット
 
@@ -185,6 +176,35 @@ export default defineConfig({
     port: 3000, // ここでポート番号を指定
   },
 });
+```
+
+## CSS モジュール
+
+CSS ファイルを React から読み込む
+
+この手順を踏むことで Class のバッティングが無くなる
+
+クラス名はキャメルケースを使う  
+ex) buttonInner etc...
+
+ファイル名が重要  
+`ファイル名.modules.css`とする
+
+ファイル : Button.module.css
+
+ファイル : Button.jsx  
+読む込む側のコード  
+`styles`という名前を良く使う
+
+```js
+import styles from "./Button.module.css";
+```
+
+ファイル : Button.jsx  
+スタイルを適用する時の書き方
+
+```html
+<button className="{styles.button}"></button>
 ```
 
 ## よく使うライブラリ
