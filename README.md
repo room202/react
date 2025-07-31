@@ -70,6 +70,7 @@ volta list
 
 ```bash
 node -v
+npm -v
 ```
 
 ## Vite + React でプロジェクト作成
@@ -214,6 +215,15 @@ npm install axios
 ```
 
 ## CSS 対応
+
+### Chakra UI
+
+Chakra UI をインストール
+
+```bash
+npm i @chakra-ui/react
+npx @chakra-ui/cli snippet add
+```
 
 ### Tailwind CSS Ver.4
 
