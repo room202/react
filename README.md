@@ -21,10 +21,11 @@
 - `VOLTA`をインストールする
 - `VOLTA`で`Nodejs`をインストールする
 - `Vite` + `React`でプロジェクト作成
+- `React Developer Tools`のインストール
 
 ## 開発環境構築
 
-### VOLTA をインストール
+### `VOLTA`をインストールする
 
 Windows
 
@@ -46,7 +47,7 @@ volta -v
 
 [参考サイト](https://docs.volta.sh/guide/getting-started)
 
-### Node.js をインストール
+### `VOLTA`で`Nodejs`をインストールする
 
 安定版の最新版をインストール
 
@@ -73,7 +74,7 @@ node -v
 npm -v
 ```
 
-## Vite + React でプロジェクト作成
+### `Vite` + `React`でプロジェクト作成
 
 `my-vite-react`というプロジェクトを作成
 
@@ -95,7 +96,11 @@ Ok to proceed? (y) y
 √ Select a variant: » JavaScript
 ```
 
-### プロジェクトの起動
+### `React Developer Tools`のインストール
+
+https://react.dev/learn/react-developer-tools
+
+## プロジェクトの起動
 
 ```bash
 # プロジェクトフォルダに移動
@@ -114,7 +119,7 @@ npm list react
 npm run dev
 ```
 
-### 次回プロジェクトの起動
+## 次回プロジェクトの起動
 
 ```bash
 cd my-vite-react
