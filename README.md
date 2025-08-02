@@ -226,8 +226,87 @@ import styles from "./Button.module.css";
 Chakra UI をインストール
 
 ```bash
-npm i @chakra-ui/react
+npm install @chakra-ui/react @emotion/react
 npx @chakra-ui/cli snippet add
+```
+
+`vite.config.js`
+
+```js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import path from 'path';  // 追加
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    react(),
+  ],
+  server: {
+    port: 3000, // ここでポート番号を指定
+  },
+  resolve: {  // @componentsのエイリアス設定を追加 ここから
+    alias: {
+      '@components': path.resolve(__dirname, 'src/components'),
+    },
+  },          // @componentsのエイリアス設定を追加 ここまで
+});
+
+```
+
+`main.jsx`
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "./components/ui/provider";  // 追加
+import App from "./App";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <Provider>
+      <App />
+    </Provider>
+  </React.StrictMode>,
+);
+```
+
+#### ライトモード、ダークモード設定
+
+`src/components/ui/provider.jsx`
+
+```jsx
+"use client";
+
+import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
+import { ColorModeProvider } from "./color-mode";
+
+export function Provider(props) {
+    return (
+        <ChakraProvider value={defaultSystem}>
+            <ColorModeProvider
+                defaultTheme="light"
+                forcedTheme="light"
+                {...props}
+            />
+        </ChakraProvider>
+    );
+}
+```
+
+`Demo.jsx`
+
+```jsx
+import { Button, HStack } from "@chakra-ui/react";
+
+export const Demo = () => {
+  return (
+    <HStack>
+      <Button>Click me</Button>
+      <Button colorScheme="teal">またはここをクリック</Button>
+    </HStack>
+  );
+};
 ```
 
 ### Tailwind CSS Ver.4
