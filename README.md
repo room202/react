@@ -4,24 +4,24 @@
 
 下記ツールを使用する
 
-- VOLTA
-  - Nodejs をインストールすることができる
-  - Nodejs のバージョンを管理したり、バージョンを切り替える場合に使用する
-- Nodejs
-  - JavaScript をサーバーサイドで動作させるためのプラットフォーム
-  - React を動かすために使用する
-- Vite
-  - モダンなフロントエンド開発のためのビルドツール
-  - React プロジェクトを作成するために使用する
+-   VOLTA
+    -   Nodejs をインストールすることができる
+    -   Nodejs のバージョンを管理したり、バージョンを切り替える場合に使用する
+-   Nodejs
+    -   JavaScript をサーバーサイドで動作させるためのプラットフォーム
+    -   React を動かすために使用する
+-   Vite
+    -   モダンなフロントエンド開発のためのビルドツール
+    -   React プロジェクトを作成するために使用する
 
 ## 開発環境構築の流れ
 
 ※`Nodejs`が既にインストールされてい場合は、一旦アンイストールしておく
 
-- `VOLTA`をインストールする
-- `VOLTA`で`Nodejs`をインストールする
-- `Vite` + `React`でプロジェクト作成
-- `React Developer Tools`のインストール
+-   `VOLTA`をインストールする
+-   `VOLTA`で`Nodejs`をインストールする
+-   `Vite` + `React`でプロジェクト作成
+-   `React Developer Tools`のインストール
 
 ## 開発環境構築
 
@@ -156,11 +156,11 @@ npm run dev
 import "./App.css";
 
 export const App = () => {
-  return (
-    <>
-      <h1>Hello React</h1>
-    </>
-  );
+    return (
+        <>
+            <h1>Hello React</h1>
+        </>
+    );
 };
 
 export default App;
@@ -176,14 +176,22 @@ import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000, // ここでポート番号を指定
-  },
+    plugins: [react()],
+    server: {
+        port: 3000, // ここでポート番号を指定
+    },
 });
 ```
 
-## CSS モジュール
+## よく使うライブラリ
+
+```bash
+npm install axios
+```
+
+## CSS 対応
+
+### CSS モジュール
 
 CSS ファイルを React から読み込む
 
@@ -212,20 +220,12 @@ import styles from "./Button.module.css";
 <button className="{styles.button}"></button>
 ```
 
-## よく使うライブラリ
-
-```bash
-npm install axios
-```
-
-## CSS 対応
-
 ### Tailwind CSS Ver.4
 
 Tailwind Ver.4 をインストール
 
 ```bash
-npm install -D @tailwindcss/vite
+npm install tailwindcss @tailwindcss/vite
 ```
 
 ファイル : `vite.config.js`の設定追加
@@ -237,13 +237,13 @@ import tailwindcss from "@tailwindcss/vite"; // 追加
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(), // 追加
-  ],
-  server: {
-    port: 3000, // ここでポート番号を指定
-  },
+    plugins: [
+        react(),
+        tailwindcss(), // 追加
+    ],
+    server: {
+        port: 3000, // ここでポート番号を指定
+    },
 });
 ```
 
@@ -259,11 +259,11 @@ export default defineConfig({
 import "./App.css";
 
 export const App = () => {
-  return (
-    <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-    </>
-  );
+    return (
+        <>
+            <h1 className="text-3xl font-bold underline">Hello world!</h1>
+        </>
+    );
 };
 
 export default App;
@@ -284,14 +284,14 @@ npx tailwindcss init -p
 ```js
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}", // 追加
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+    content: [
+        "./index.html",
+        "./src/**/*.{js,ts,jsx,tsx}", // 追加
+    ],
+    theme: {
+        extend: {},
+    },
+    plugins: [],
 };
 ```
 
