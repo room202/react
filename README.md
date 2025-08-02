@@ -71,6 +71,7 @@ volta list
 
 ```bash
 node -v
+npm -v
 ```
 
 ### `Vite` + `React`でプロジェクト作成
@@ -218,6 +219,15 @@ import styles from "./Button.module.css";
 
 ```html
 <button className="{styles.button}"></button>
+```
+
+### Chakra UI
+
+Chakra UI をインストール
+
+```bash
+npm i @chakra-ui/react
+npx @chakra-ui/cli snippet add
 ```
 
 ### Tailwind CSS Ver.4
