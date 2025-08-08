@@ -30,7 +30,11 @@
 Windows
 
 ```ps
+# インストール
 winget install Volta.Volta
+
+# アンイストール
+winget uninstall Volta.Volta
 ```
 
 MacOS
@@ -59,6 +63,12 @@ volta install node
 
 ```bash
 volta install node@22.15.0
+```
+
+アンイストール
+
+```bash
+
 ```
 
 インストール済みのパッケージを一覧表示
@@ -223,7 +233,7 @@ import styles from "./Button.module.css";
 
 ### Chakra UI
 
-Chakra UI をインストール
+インストール
 
 ```bash
 npm install @chakra-ui/react @emotion/react
@@ -264,6 +274,7 @@ import App from "./App";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <!--<Provider>で囲む -->
     <Provider>
       <App />
     </Provider>
